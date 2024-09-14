@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ECE3D5;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*the navbar*/
+.container {
+    margin: 0 2rem;
+    height: 100%;
+    z-index: 999;
+}
+
+.line-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0; /* No space between the navbar and the lines */
+}
+
+.line-wrapper .line {
+    width: 100%;
+    height: 1.5px; /* Skinnier lines */
+    background-color: #634028;
+    margin: 2px 0; /* Reduced spacing between lines */
+}
+
+.top-line,
+.bottom-line {
+    display: none; /* Hiding the original single line */
+}
+
+/* Default navbar styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+}
+
+nav .logo {
+    width: 77px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul a {
+    color: #634028;
+    padding: 20px;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+nav ul a:hover {
+    color: #ECE3D5;
+    background-color: #634028;
+    border-radius: 5px;
+}
+
+/* Burger menu styles */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: #634028;
+    margin: 4px;
+    transition: 0.3s;
+}
+
+
+
+/* Menu toggle functionality */
+.menu-icon.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+.content-text {
+
+    text-align: center;
+    width: 100%;
+}
+
+h2 {
+    font-size: 39px;
+    color: #634028;
+    margin: 0;
+    padding: 100px;
+
+}
+
+h2 span {
+    color: #634028;
+    font-size: 15px;
+    line-height: 1.4em;
+    margin-bottom: 30px;
+
+}
+
+.btn {
+    width: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A8927F;
+    color: #634028;
+    border-radius: 20px;
+    margin: 0px;
+    padding: 10px;
+    margin-left: 43%;
+    margin-bottom: 60px;
+    margin-top: -90px;
+
+}
+
+.btn:hover {
+    background-color: #634028;
+    color: #A8927F;
+}
+/*footer-start*/
+footer {
+    background-color: #A8927F;
+    color: #634028;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.logo-img {
+    max-width: 150px; /* Adjust based on your logo size */
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #634028;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.footer-links a:hover {
+   color: #ECE3D5;
+}
+
+.footer-social {
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin: 0 10px;
+
+}
+.footer-social a {
+    color: #634028;
+    text-decoration: none;
+    width: 500px;
+}
+/*footer end*/
+.countdown-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px; /* Padding for spacing around the section */
+    background: #A8927F;
+    text-align: center; /* Centered text inside the section */
+}
+
+h1 {
+    color: #634028;
+    font-size: 40px;
+    margin: 0; /* Resetting the margin */
+    margin-bottom: 30px; /* 30px space between the h1 and the countdown container */
+}
+
+.countdown-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px; /* Limit width on larger screens */
+    text-align: center; /* Center the text inside the countdown blocks */
+}
+
+.countdown-container .bx {
+    border-radius: 10px;
+    height: 14.25rem;
+    background: #ECE3D5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 10px solid #634028;
+}
+
+.countdown-container .bx .counter {
+    font-size: 5rem; /* Font size for visibility */
+    color: #634028;
+    font-weight: 400;
+}
+
+.countdown-container .bx .caption {
+    color: #634028;
+    margin-top: 0.5rem; /* Spacing between counter and caption */
+}
+.kalamfadi{
+    margin: 95px auto;
+    width: 70%;
+    padding: -50px;
+}
+.kalamfadi img{
+    width: 320px;
+    float: left;
+    border: 3px solid #634028;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+.text-box{
+    color: #634028;
+}
+.kalamfadi .text-box h4{
+    font-size: 25px;
+}
+.text-box{
+    font-size: 16px;
+}
+
+/* Wrapper Styles */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: #A8927F;
+    text-align: center;
+    padding: 20px; /* Adjusted padding */
+    flex-wrap: wrap;
+    gap: 0; /* Ensure no space between flex items */
+}
+
+.box-area {
+    width: 350px;
+    margin: 10px; /* Further reduced margin */
+    padding: 20px;
+    background-color: #ECE3D5;
+    transition: background-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out; /* Specify transition properties */
+}
+
+.box-area .icon-area {
+    width: 100%;
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+.icon-area {
+    font-size: 70px;
+    color: #634028;
+}
+
+.box-area h6 {
+    margin-bottom: 10px;
+    color: #634028;
+    font-size: 50px;
+}
+
+.box-area p {
+    color: #634028;
+    font-size: 35px;
+}
+
+.box-area:hover {
+    background-color: #634028;
+    box-shadow: 15px 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.box-area:hover .icon-area,
+.box-area:hover h6,
+.box-area:hover p {
+    color: #ECE3D5;
+}
+/* Gallery Container Styles */
+.scroll-gallery {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    background-color: #ECE3D5;
+    perspective: 1000px; /* Perspective for 3D effect */
+}
+
+.gallery-title {
+    text-align: center;
+    font-size: 36px; /* Adjusted font size */
+    color: #634028;
+    margin-bottom: 20px; /* Space between title and gallery */
+    font-family: 'Arial', sans-serif; /* Use a professional font family */
+    font-weight: bold; /* Bold for emphasis */
+}
+
+/* Scroll Gallery Styles */
+.scroll-container {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    animation: scroll 60s linear infinite; /* Slower continuous scrolling animation */
+}
+
+.scroll-item {
+    flex: 0 0 300px;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    transform-style: preserve-3d; /* Enable 3D transformations */
+    cursor: pointer;
+}
+
+.scroll-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.scroll-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.scroll-item:hover {
+    transform: rotateY(5deg) rotateX(5deg) scale(1.05); /* Slightly less intense 3D rotation */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Reduced shadow for a more subtle effect */
+}
+
+.scroll-item:hover .scroll-image img {
+    filter: brightness(0.7); /* Darken image on hover */
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scroll-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-gallery {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Continuous scrolling animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+    /* Responsive Navbar */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #ECE3D5;
+        text-align: center;
+        padding: 1rem 0;
+        flex-direction: column;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        padding: 10px;
+    }
+
+    .menu-icon span {
+        width: 30px;
+        height: 3px;
+        background-color: #333;
+    }
+
+    .menu-icon.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-icon.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-icon.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Responsive Header Text */
+    .content-text h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .content-text h2 span {
+        font-size: 1.2rem;
+    }
+
+    /* Responsive Apply Button */
+    .btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* Responsive Countdown Section */
+    .countdown-section {
+        padding: 1rem;
+    }
+
+    .countdown-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bx {
+        margin: 0.5rem 0;
+    }
+
+    /* Responsive Letter From Secretary-General */
+    .kalamfadi {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .kalamfadi img {
+        width: 100%;
+        height: auto;
+    }
+
+    .text-box h4 {
+        font-size: 1.2rem;
+    }
+
+    .text-box p {
+        font-size: 1rem;
+    }
+
+    /* Responsive Scroll Gallery */
+    .scroll-gallery {
+        padding: 1rem;
+    }
+
+    .scroll-container {
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+
+    .scroll-item {
+        display: inline-block;
+        width: 80%;
+        margin-right: 10px;
+    }
+
+    .scroll-item img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Responsive Footer */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo {
+        margin-bottom: 1rem;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+        margin: 0.5rem 0;
+    }
+
+    .footer-social {
+        margin-top: 1rem;
+    }
+}
+  </style>
+</head>
+
+<body>
+    <div id="homepage">
+        <div class="line-wrapper top-line-wrapper">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="container">
+            <nav>
+                <img src="image/logo.png" class="logo" alt="logo">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="team.html">TEAM</a></li>
+                    <li><a href="committe.html">COMMITTEES</a></li>
+                    <li><a href="apply.html">APPLICATION</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="line-wrapper bottom-line-wrapper">
+            <div class="line"></div>
+            <div class="line"></div>
+            </div>
+            <div class="content-text">
+                <h2>Şehit Mehmet Karaaslan <br>International Model <br>
+                    United Nations <br><span>WITNESS THE ART OF
+                        LEADERSHIP WITH US</span></h2>
+            </div>
+            <div>
+                <a class="btn">APPLY NOW</a>
+            </div>
+
+        </div>
+    </div>
+    <section class="countdown-section">
+        <h1>SMKIMUN'25</h1>
+        <div class="countdown-container">
+            <div class="bx">
+                <div id="day" class="counter">0</div>
+                <div class="caption">Days</div>
+            </div>
+            <div class="bx">
+                <div id="hour" class="counter">0</div>
+                <div class="caption">Hours</div>
+            </div>
+            <div class="bx">
+                <div id="minute" class="counter">0</div>
+                <div class="caption">Minutes</div>
+            </div>
+            <div class="bx">
+                <div id="second" class="counter">0</div>
+                <div class="caption">Seconds</div>
+            </div>
+        </div>
+    </section>
+     <section class="kalamfadi">
+        <img src="image/1.jpeg" alt="">
+        <div class="text-box">
+        <h4>
+            Letter From The Secretary-General</h4>
+        <p>Dear Delegates, Esteemed Advisors, and Honored Guests,
+
+            It is with great pleasure and enthusiasm that I welcome you to the SMKIMUN 2025 Conference. As the Secretary-General of this prestigious event, I am honored to oversee the assembly of brilliant minds from around the world, united by a common goal: to engage in meaningful dialogue and find solutions to some of the most pressing global issues of our time.
+            
+            Model United Nations conferences are not just about debating and diplomacy; they are about understanding the complexities of the world we live in, appreciating diverse perspectives, and working collaboratively towards a better future. SMKIMUN'25 is committed to providing a platform where your voices can be heard, your ideas can flourish, and your leadership skills can be honed.
+            
+            This year’s conference theme, "[Insert Theme Here]", reflects our commitment to addressing contemporary global challenges with innovative and sustainable solutions. We have carefully curated committees and topics that will challenge you to think critically, negotiate diplomatically, and collaborate effectively.
+            
+            I encourage you all to approach this conference with an open mind and a willingness to learn from one another. Remember, every voice matters, and every contribution can lead to positive change.
+            
+            Thank you for your dedication, passion, and commitment to making SMKIMUN'25 an unforgettable experience. I look forward to witnessing the fruitful discussions and resolutions that will emerge from this year’s conference.
+            
+            Best regards, <br>
+            
+            [Your Name] <br>
+            Secretary-General <br>
+            SMKIMUN 2025</p>
+        </div>
+     </section>
+     <div class="wrapper">
+        <div class="box-area">
+            <div class="icon-area">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <h6>+123</h6>
+            <p>blblb</p>
+        </div>
+        <div class="box-area">
+            <div class="icon-area">
+                <i class="fa-solid fa-school"></i>
+            </div>
+            <h6>+123</h6>
+            <p>blblb</p>
+        </div>
+        <div class="box-area">
+            <div class="icon-area">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h6>+123</h6>
+            <p>blblb</p>
+        </div>
+     </div>
+     <section class="scroll-gallery">
+        <h3 class="gallery-title">Archive</h3>
+        <div class="scroll-container">
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/_DSF3570.JPG" alt="Gallery Image 1">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/_DSF4098.JPG" alt="">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/_DSF4612.JPG" alt="Gallery Image 3">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/IMG_1307.JPG" alt="Gallery Image 4">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/IMG_1690.JPG" alt="Gallery Image 5">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/IMG_1983.JPG" alt="Gallery Image 6">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/IMG_3787.JPG" alt="Gallery Image 7">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/IMG_4755.JPG" alt="Gallery Image 8">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/IMG_8874.JPG" alt="Gallery Image 9">
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="scroll-image">
+                    <img src="image/IMG_8874.JPG" alt="Gallery Image 10">
+                </div>
+            </div>
+        </div>
+    </section>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="image/SMKIMUN’25 (4).png" alt="Logo" class="logo-img" >
+
+        </div>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://instagram.com" target="_blank" class="social-icon">
+                <i class="fa-brands fa-instagram"></i>
+               
+            </a>
+        </div>
+    </div>
+</footer>
+<script src="app.js" defer></script>
+</body>
+
+</html>
